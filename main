@@ -15,7 +15,7 @@ set -e
 set -x
 
 # Make output directories
-mkdir -p out_dir_report
+mkdir -p out_dir
 
 # Run the actual python code
 singularity exec docker://brainlife/mne:0.23dev python3 detect_alpha_peak.py
