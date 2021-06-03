@@ -47,14 +47,14 @@ def main():
     freqs_file = config.pop('freqs')
     freqs = np.load(freqs_file)
 
-    # Detect alpha peak
+    # Detect alpha peak #
     alpha_freq_pic = detect_alpha_peak(psd_welch, freqs)
 
-    # Success message in product.json 
+    # Success message in product.json #
     success_message = f'Alpha peak successfully detected at {alpha_freq_pic:.2f}Hz.'   
     dict_json_product['brainlife'].append({'type': 'success', 'msg': success_message})
 
-    # Save the dict_json_product in a json file
+    # Save the dict_json_product in a json file #
     with open('product.json', 'w') as outfile:
         json.dump(dict_json_product, outfile)
 
