@@ -3,6 +3,8 @@
 import json
 import mne
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def detect_alpha_peak(psd_welch, freqs):
@@ -25,7 +27,12 @@ def detect_alpha_peak(psd_welch, freqs):
     index_of_the_pic = int(pic_loc[0])
     alpha_freq_pic = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
 
-    return alpha_freq_pic
+    return alpha_freq_pic, psd_welch_mean 
+
+
+# def plot_psd(psd_welch_mean, freqs, alpha_freq_pic):
+
+#     plt.plot(freqs, psd_welch_mean)
    
 
 def main():
@@ -39,16 +46,20 @@ def main():
 
     # Read the outputs of PSD app #
 
-    # psd_welch
+    # Load csv
     psd_welch_file = config.pop('psd_welch')
-    psd_welch = np.load(psd_welch_file)
 
-    # freqs
-    freqs_file = config.pop('freqs')
-    freqs = np.load(freqs_file)
+    # Extract PSD
+    df_psd_welch = pd.read_csv(psd_welch_file)
+    df_psd_welch = df_psd_welch.drop(["Unnamed: 0"], axis=1)
+    psd_welch = df_psd_welch.to_numpy()
+
+    # Extract freqs
+    freqs = df_psd_welch.columns.to_numpy()
+    freqs = freqs.astype(np.float)  
 
     # Detect alpha peak #
-    alpha_freq_pic = detect_alpha_peak(psd_welch, freqs)
+    alpha_freq_pic, psd_welch_mean = detect_alpha_peak(psd_welch, freqs)
 
     # Success message in product.json #
     success_message = f'Alpha peak successfully detected at {alpha_freq_pic:.2f}Hz.'   
