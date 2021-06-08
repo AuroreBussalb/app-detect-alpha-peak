@@ -52,7 +52,7 @@ def main():
     path_to_input_file = config.pop('psd_welch')
     # To be able to read input raw datatype
     if "/." in path_to_input_file:
-    	path_to_input_file = os.rename(path_to_input_file, path_to_input_file('.', 'psd.csv'))
+    	path_to_input_file = os.rename(path_to_input_file, path_to_input_file.replace('.', 'psd.csv'))
 
     # Read the outputs of PSD app #
 
