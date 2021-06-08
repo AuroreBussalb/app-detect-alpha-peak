@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import shutil
 
 
 def detect_alpha_peak(psd_welch, freqs):
@@ -52,13 +53,14 @@ def main():
     path_to_input_file = config.pop('psd_welch')
     # To be able to read input raw datatype
     if "out_dir/." in path_to_input_file:
-    	new_path = path_to_input_file.replace('out_dir/.', 'out_dir/psd.csv')
-    	path_to_input_file = os.rename(path_to_input_file, new_path)
+    	file = path_to_input_file.replace('out_dir/.', 'out_dir/psd.csv')
+    	# new_path = path_to_input_file.replace('out_dir/.', 'out_dir/psd.csv')
+    	# path_to_input_file = os.rename(path_to_input_file, new_path)
 
     # Read the outputs of PSD app #
 
     # Extract PSD
-    df_psd_welch = pd.read_csv(path_to_input_file)
+    df_psd_welch = pd.read_csv(file)
     df_psd_welch = df_psd_welch.drop(["Unnamed: 0"], axis=1)
     psd_welch = df_psd_welch.to_numpy()
 
