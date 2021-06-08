@@ -48,34 +48,33 @@ def main():
     with open('config.json') as config_json:
         config = json.load(config_json)
 
+    # Load csv
+    path_to_input_file = config.pop('psd_welch')
     # To be able to read input raw datatype
-    print(config.pop('psd_welch'))
-    # os.rename()
+    if "/." in path_to_input_file:
+    	path_to_input_file = os.rename(path_to_input_file, path_to_input_file('.', 'psd.csv'))
 
-    # # Read the outputs of PSD app #
+    # Read the outputs of PSD app #
 
-    # # Load csv
-    # psd_welch_file = config.pop('psd_welch')
+    # Extract PSD
+    df_psd_welch = pd.read_csv(path_to_input_file)
+    df_psd_welch = df_psd_welch.drop(["Unnamed: 0"], axis=1)
+    psd_welch = df_psd_welch.to_numpy()
 
-    # # Extract PSD
-    # df_psd_welch = pd.read_csv(psd_welch_file)
-    # df_psd_welch = df_psd_welch.drop(["Unnamed: 0"], axis=1)
-    # psd_welch = df_psd_welch.to_numpy()
+    # Extract freqs
+    freqs = df_psd_welch.columns.to_numpy()
+    freqs = freqs.astype(np.float)  
 
-    # # Extract freqs
-    # freqs = df_psd_welch.columns.to_numpy()
-    # freqs = freqs.astype(np.float)  
+    # Detect alpha peak #
+    alpha_freq_pic, psd_welch_mean = detect_alpha_peak(psd_welch, freqs)
 
-    # # Detect alpha peak #
-    # alpha_freq_pic, psd_welch_mean = detect_alpha_peak(psd_welch, freqs)
+    # Success message in product.json #
+    success_message = f'Alpha peak successfully detected at {alpha_freq_pic:.2f}Hz.'   
+    dict_json_product['brainlife'].append({'type': 'success', 'msg': success_message})
 
-    # # Success message in product.json #
-    # success_message = f'Alpha peak successfully detected at {alpha_freq_pic:.2f}Hz.'   
-    # dict_json_product['brainlife'].append({'type': 'success', 'msg': success_message})
-
-    # # Save the dict_json_product in a json file #
-    # with open('product.json', 'w') as outfile:
-    #     json.dump(dict_json_product, outfile)
+    # Save the dict_json_product in a json file #
+    with open('product.json', 'w') as outfile:
+        json.dump(dict_json_product, outfile)
 
 
 if __name__ == '__main__':
