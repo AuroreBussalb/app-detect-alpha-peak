@@ -29,21 +29,36 @@ def detect_alpha_peak(psd_welch, freqs):
     index_of_the_pic = int(pic_loc[0])
     alpha_freq_pic = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
 
-    return alpha_freq_pic, psd_welch_mean 
+    return alpha_freq_pic, psd_welch_mean, alpha_freqs, psd_in_alpha_freqs  
 
 
-# def plot_psd(psd_welch_mean, freqs, alpha_freq_pic):
+def plot_psd(freqs, alpha_freq_pic, psd_welch_mean, alpha_freqs, psd_in_alpha_freqs):
+ 
+    # Get the index of alpha peak
+    id_alpha_peak =  np.where(freqs==alpha_freq_pic)
 
-#     plt.plot(freqs, psd_welch_mean)
-   
+    # Plot spectrum
+    plt.plot(freqs, psd_welch_mean)   
+
+    # Plot a red point on the alpha peak
+    plt.plot(alpha_freq_pic, psd_welch_mean[id_alpha_peak], marker='o', markersize=3, color="red")
+
+    # Shadow the frequencies in which we look for the peak
+    plt.ylim(ymin=min(psd_welch_mean))
+    plt.fill_between(alpha_freqs, psd_in_alpha_freqs, min(psd_welch_mean), alpha=0.2)
+
+    # Define labels
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Power Spectral Density')
+
+    # Save fig
+    plt.savefig('psd.png')
+
 
 def main():
 
     # Generate a json.product to display messages on Brainlife UI
     dict_json_product = {'brainlife': []}
-
-    # For raw datatype
-    # input_dir = 'out_dir/psd.csv'
 
     # Load inputs from config.json
     with open('config.json') as config_json:
@@ -67,7 +82,10 @@ def main():
     freqs = freqs.astype(np.float)  
 
     # Detect alpha peak #
-    alpha_freq_pic, psd_welch_mean = detect_alpha_peak(psd_welch, freqs)
+    alpha_freq_pic, psd_welch_mean, alpha_freqs, psd_in_alpha_freqs = detect_alpha_peak(psd_welch, freqs)
+
+    # Plot spectrum #
+    plot_psd(freqs, alpha_freq_pic, psd_welch_mean, alpha_freqs, psd_in_alpha_freqs)
 
     # Success message in product.json #
     success_message = f'Alpha peak successfully detected at {alpha_freq_pic:.2f}Hz.'   
