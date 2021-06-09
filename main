@@ -20,15 +20,15 @@ mkdir -p out_dir
 # Run the actual python code
 singularity exec docker://brainlife/mne:0.23dev python3 detect_alpha_peak.py
 
-#store PSD plot with alpha peak on product.json
-cat << EOF > product.json
-{
-    "brainlife": [
-        { 
-            "type": "image/png", 
-	        "name": "Alpha peak",
-            "base64": "$(base64 -w 0 out_dir/psd_figure.png)"
-        }
+# Store PSD plot with alpha peak on product.json
+#cat << EOF > product.json
+#{
+#    "brainlife": [
+#       { 
+#           "type": "image/png", 
+#	    "name": "Alpha peak",
+#           "base64": "$(base64 -w 0 out_dir/psd_figure.png)"
+#       }
     ]
-}
-EOF
+#}
+#EOF
