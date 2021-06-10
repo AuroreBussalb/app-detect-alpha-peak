@@ -28,7 +28,12 @@ cat << EOF > product.json
            "type": "image/png", 
 	   "name": "Alpha peak on mean spectrum",
            "base64": "$(base64 -w 0 out_dir/psd_mean.png)"
+       },
+       { 
+           "type": "image/png", 
+	   "name": "Alpha peak on each spectrum",
+           "base64": "$(base64 -w 0 out_dir/psd_channe.png)"
        }
 ]
 }
-#EOF
+EOF
