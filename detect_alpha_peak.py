@@ -126,7 +126,7 @@ def plot_psd_per_channels(freqs, alpha_freq_pic_per_channel, psd_in_alpha_freqs_
     # Define labels
     plt.xlabel('Frequency (Hz)')
     plt.ylabel('Power Spectral Density')
-    plt.title('Mean power spectrum across all channels')
+    plt.title('Power spectrum for all channels')
     plt.legend()
 
     # Save fig
