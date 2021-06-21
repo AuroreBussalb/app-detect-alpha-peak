@@ -142,8 +142,9 @@ def main():
     # Load csv
     path_to_input_file = config.pop('psd_welch')
     # To be able to read input raw datatype
-    if "out_dir/." in path_to_input_file:
-        path_to_input_file = path_to_input_file.replace('out_dir/.', 'out_dir/psd.csv')
+    # if "out_dir/." in path_to_input_file:
+    #     path_to_input_file = path_to_input_file.replace('out_dir/.', 'out_dir/psd.csv')
+
 
     # Read the outputs of PSD app #
 
