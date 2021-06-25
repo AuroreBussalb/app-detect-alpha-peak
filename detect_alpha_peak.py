@@ -5,8 +5,6 @@ import mne
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import os
-import shutil
 
 
 def get_alpha_freqs(freqs):
@@ -22,7 +20,6 @@ def get_alpha_freqs(freqs):
 
 
 def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
-
 
     # Average PSD across all channels
     psd_welch_mean = np.mean(psd_welch, axis=0)    
@@ -103,17 +100,7 @@ def plot_psd_per_channels(freqs, alpha_freq_pic_per_channel, psd_in_alpha_freqs_
 
     plt.figure()
  
-    # Get the index of each alpha peak
-    # list_alpha_peak_id = []
-    # for freq_channels in alpha_freq_pic_per_channel:
-    #     id_alpha_peak = np.where(freqs==freq_channels)
-    #     list_alpha_peak_id.append(id_alpha_peak)
-
-    # Plot spectrum
-    # for channel, id_papf in zip(range(0, len(alpha_freq_pic_per_channel)), list_alpha_peak_id):
-    #     plt.plot(freqs, psd_welch[channel], zorder=1)  
-          # plt.scatter(alpha_freq_pic_per_channel[channel], psd_welch[channel, id_papf], marker='o', color="red", zorder=3, alpha=0.2, size=0.2)
-    for channel in range(0, len(alpha_freq_pic_per_channel)):
+   for channel in range(0, len(alpha_freq_pic_per_channel)):
         plt.plot(freqs, psd_welch[channel], zorder=1)  
 
     # Define lim
