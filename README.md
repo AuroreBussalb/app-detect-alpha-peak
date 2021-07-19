@@ -5,7 +5,7 @@
 
 Detect individual alpha peak in MEG signals.
 
-# app-detect-alpha-peak documentation
+## app-detect-alpha-peak documentation
 
 1) Detect alpha peak frequency for each channel and for the mean over all channels
 2) Input file is:
