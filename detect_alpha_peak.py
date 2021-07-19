@@ -100,7 +100,7 @@ def plot_psd_per_channels(freqs, alpha_freq_pic_per_channel, psd_in_alpha_freqs_
 
     plt.figure()
  
-   for channel in range(0, len(alpha_freq_pic_per_channel)):
+    for channel in range(0, len(alpha_freq_pic_per_channel)):
         plt.plot(freqs, psd_welch[channel], zorder=1)  
 
     # Define lim
