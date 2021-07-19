@@ -1,4 +1,8 @@
 # app-detect-alpha-peak
+
+[![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.469-blue.svg)](https://doi.org/10.25663/brainlife.app.469)
+
 Detect individual alpha peak in MEG signals.
 
 # app-detect-alpha-peak documentation
@@ -15,7 +19,7 @@ Detect individual alpha peak in MEG signals.
 - [Aurore Bussalb](aurore.bussalb@icm-institute.org)
 
 ### Contributors
-- [Aurore Bussalb](aurore.bussalb@icm-institute.org)
+- [Guiomar Niso](guiomar.niso@ctb.upm.es)
 - [Maximilien Chaumon](maximilien.chaumon@icm-institute.org)
 
 ### Funding Acknowledgement
