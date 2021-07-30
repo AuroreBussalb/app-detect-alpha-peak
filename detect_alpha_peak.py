@@ -22,9 +22,11 @@ def get_alpha_freqs(freqs):
 def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
 
     # Average PSD across all channels
+    # MEAN OF THE PEAKS FOR EACH CHANNEL OR MEAN OF THE CHENNELS AND THEN PEAK?? (GUIO)
     psd_welch_mean = np.mean(psd_welch, axis=0)    
 
     # Get the std of the mean
+    # STD OR STDERR?? (GUIO)
     psd_welch_std = np.std(psd_welch, axis=0) 
 
     # Extract psd in alpha freqs
@@ -33,6 +35,7 @@ def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
     # Find peak 
     pic_loc = mne.preprocessing.peak_finder(psd_in_alpha_freqs_mean)
 
+    print(pic_loc)
     # Find the corresponding frequency 
     index_of_the_pic = int(pic_loc[0])
     alpha_freq_pic_mean = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
