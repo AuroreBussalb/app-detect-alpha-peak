@@ -36,6 +36,8 @@ def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
     pic_loc = mne.preprocessing.peak_finder(psd_in_alpha_freqs_mean)
 
     print(pic_loc)
+    # If is empty (no peak found)
+    if pic_loc[0].size==0: pic_loc=([0],[0])
     # Find the corresponding frequency 
     index_of_the_pic = int(pic_loc[0])
     alpha_freq_pic_mean = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
