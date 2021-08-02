@@ -147,7 +147,7 @@ def main():
 
     # Extract freqs
     freqs = df_psd_welch.columns.to_numpy()
-    freqs = freqs.astype(np.float)  
+    freqs = freqs.astype(float)  
 
     # Get alpha freqs
     alpha_freqs, indexes_alpha_freqs = get_alpha_freqs(freqs)
