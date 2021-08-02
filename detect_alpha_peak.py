@@ -55,6 +55,10 @@ def detect_alpha_peak_per_channels(psd_welch, alpha_freqs, indexes_alpha_freqs):
         psd_in_alpha_freqs_per_channel = np.take(psd_welch[channel, :], indexes_alpha_freqs)
         # Find peak 
         pic_loc = mne.preprocessing.peak_finder(psd_in_alpha_freqs_per_channel)
+        print(pic_loc)
+        # If is empty (no peak found)
+        if pic_loc[0].size==0: pic_loc=(np.array([0]),np.array([0]))
+
         pic_loc = pic_loc[0]
         if len(pic_loc) > 1:  # if more than 1 peak is found
             pic_loc = max(pic_loc)
