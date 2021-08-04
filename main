@@ -8,7 +8,7 @@
 #
 # This is the main file run by the brainlife.io orchestration system
 #
-# Author: Franco Pestilli
+# Author: Guiomar Niso, Aurore Bussalb
 
 
 set -e
