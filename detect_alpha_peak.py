@@ -175,7 +175,7 @@ def main():
     df_alpha_peaks = df_alpha_peaks.append(d_mean_channels, ignore_index=True)
 
     # Save it into a csv
-    df_alpha_peaks.to_csv('out_dir/alpha_peak_frequency.csv', index=False)
+    df_alpha_peaks.to_csv('out_dir2/alpha_peak_frequency.csv', index=False)
 
 
     # Plot spectrum #
