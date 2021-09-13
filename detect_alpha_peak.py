@@ -22,7 +22,7 @@ def get_alpha_freqs(freqs):
 def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
 
     # Average PSD across all channels
-    # MEAN OF THE PEAKS FOR EACH CHANNEL OR MEAN OF THE CHENNELS AND THEN PEAK?? (GUIO)
+    # MEAN OF THE PEAKS FOR EACH CHANNEL OR MEAN OF THE CHANNELS AND THEN PEAK?? (GUIO)
     psd_welch_mean = np.mean(psd_welch, axis=0)    
 
     # Get the std of the mean
@@ -38,8 +38,11 @@ def detect_alpha_peak_mean(psd_welch, alpha_freqs, indexes_alpha_freqs):
     print(pic_loc)
     # If is empty (no peak found)
     if pic_loc[0].size==0: pic_loc=(np.array([0]),np.array([0]))
+    pic_loc = pic_loc[0]
+    if len(pic_loc) > 1:  # if more than 1 peak is found
+        pic_loc = max(pic_loc)
     # Find the corresponding frequency 
-    index_of_the_pic = int(pic_loc[0])
+    index_of_the_pic = int(pic_loc)
     alpha_freq_pic_mean = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
 
     return alpha_freq_pic_mean, psd_welch_mean, psd_welch_std, psd_in_alpha_freqs_mean 
@@ -53,16 +56,19 @@ def detect_alpha_peak_per_channels(psd_welch, alpha_freqs, indexes_alpha_freqs):
     for channel in range(0, psd_welch.shape[0]): 
         # Extract psd in alpha freqs
         psd_in_alpha_freqs_per_channel = np.take(psd_welch[channel, :], indexes_alpha_freqs)
-        # Find peak 
+        # Find peak: pic_loc=[index, value]
         pic_loc = mne.preprocessing.peak_finder(psd_in_alpha_freqs_per_channel)
+        
         print(pic_loc)
         # If is empty (no peak found)
-        if pic_loc[0].size==0: pic_loc=(np.array([0]),np.array([0]))
-
+        if len(pic_loc[0])==0: pic_loc=(np.array([0]),np.array([0]))
+        # If more than one peak found (take the first peak)
+        #if len(pic_loc[0])>1: pic_loc=(np.array([pic_loc[0][0]]),np.array([pic_loc[1][0]]))
+        
         pic_loc = pic_loc[0]
         if len(pic_loc) > 1:  # if more than 1 peak is found
             pic_loc = max(pic_loc)
-        # Find the corresponding frequency
+        # Find the corresponding frequency, GUIO: this should be equivalent to: pic_loc[1]
         index_of_the_pic = int(pic_loc)
         alpha_freq_pic = alpha_freqs[index_of_the_pic]  # Apply the index of the pic in alpha_freqs, not in freqs!
         alpha_freq_pic_per_channel.append(alpha_freq_pic)
