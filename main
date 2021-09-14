@@ -26,16 +26,16 @@ cat << EOF > product.json
 {
     "brainlife": [
        { 
-           "type": "image/png", 
-	   "name": "Alpha peak on mean spectrum",
-           "base64": "$(base64 -w 0 out_dir2/psd_alpha_peak.png)"
+        "type": "image/png", 
+	    "name": "Alpha peak on mean spectrum",
+        "base64": "$(base64 -w 0 out_dir2/psd_alpha_peak.png)"
        }
 ]
 }
 EOF
 
-#        { 
- #          "type": "image/png", 
-#	   "name": "Power spectrum for all channels",
- #          "base64": "$(base64 -w 0 out_dir2/psd_allchannels.png)"
-  #     }
+#      { 
+#       "type": "image/png", 
+#	    "name": "Power spectrum for all channels",
+#       "base64": "$(base64 -w 0 out_dir2/psd_allchannels.png)"
+#      }
