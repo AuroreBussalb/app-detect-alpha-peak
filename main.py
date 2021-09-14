@@ -125,7 +125,7 @@ plt.plot(freqs, psd_welch.transpose(), zorder=1)
 plt.xlim(xmin=0, xmax=max(freqs))
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Power Spectral Density')
-plt.title('PSD alpha peak: ',mean_alpha_peak,' Hz')  
+plt.title('PSD alpha peak: ',mean_alpha_peak)  
 
 # SHADE ALPHA BAND (GUIO)
 
