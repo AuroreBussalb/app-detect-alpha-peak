@@ -59,7 +59,7 @@ alpha_channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*1)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*0.5)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace = .5, wspace=.2)
 axs = axs.ravel()
 
@@ -108,7 +108,7 @@ mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 # == SAVE FILE ==
 # Save to CSV file (could be also TSV)
 df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['alpha_peak'])
-df_psd.to_csv(os.path.join('out_dir','alpha_peak.csv'))
+df_alpha.to_csv(os.path.join('out_dir','alpha_peak.csv'))
 
 
 # Read CSV file
