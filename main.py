@@ -131,5 +131,5 @@ plt.ylabel('Power Spectral Density')
 
 plt.axvline(x=mean_alpha_peak,c='k',ls=':');
 # Save fig
-df_psd.to_csv(os.path.join('out_dir2','psd_alpha_peak.png'),dpi=10)
+plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'),dpi=10)
 
