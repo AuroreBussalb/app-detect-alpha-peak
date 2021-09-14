@@ -59,7 +59,7 @@ alpha_channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(20, math.ceil(nchannels/5*1)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*1)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace = .5, wspace=.2)
 axs = axs.ravel()
 
@@ -98,7 +98,7 @@ for channel in range(0, nchannels):
     #axs[channel].set_title(canales[channel])  
 
 #Save Figure 1  
-plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=50)
+plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=20)
 plt.close()
 
 # Average of the peak of all the channels
@@ -130,7 +130,7 @@ plt.ylabel('Power Spectral Density')
 
 # SHADE ALPHA BAND (GUIO)
 
-plt.axvline(x=mean_alpha_peak,c='k',ls=':');
+plt.axvline(x=mean_alpha_peak,c='k',ls=':')
 # Save fig
 plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'))
 plt.close()
