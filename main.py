@@ -118,17 +118,18 @@ df_psd.to_csv(os.path.join('out_dir','alpha_peak.csv'))
 # ==== PLOT FIGURES ====
 
 # FIGURE 2
-# Plot MNE PSD
+# Plot PSD
+
 plt.figure(2)
-raw.plot_psd(tmin=tmin, tmax=tmax, fmin=fmin, fmax=fmax, proj=proj, n_fft=n_fft, n_overlap=n_overlap, window=window, 
-            ax=None, color='black', xscale='linear', area_mode='std', area_alpha=0.33, 
-            dB=True, estimate='auto', show=True, n_jobs=1, average=False, 
-            line_alpha=None, spatial_colors=True, sphere=None, verbose=None)
+plt.plot(freqs, psd_welch.transpose(), zorder=1) 
+plt.xlim(xmin=0, xmax=max(freqs))
+plt.xlabel('Frequency (Hz)')
+plt.ylabel('Power Spectral Density')
+plt.title('PSD alpha peak: ',mean_alpha_peak,' Hz')  
 
 # SHADE ALPHA BAND (GUIO)
 
 plt.axvline(x=mean_alpha_peak,c='k',ls=':');
-plt.set_title('PSD alpha peak: ',mean_alpha_peak,' Hz')  
 # Save fig
 df_psd.to_csv(os.path.join('out_dir2','psd_alpha_peak.png'))
 
