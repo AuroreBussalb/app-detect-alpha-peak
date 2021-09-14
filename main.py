@@ -98,7 +98,7 @@ for channel in range(0, nchannels):
     #axs[channel].set_title(canales[channel])  
 
 #Save Figure 1  
-plt.savefig(os.path.join('out_dir2','psd_allchannels.png'))
+plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),quality=30)
 
 # Average of the peak of all the channels
 mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
