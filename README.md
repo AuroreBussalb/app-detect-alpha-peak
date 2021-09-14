@@ -7,7 +7,7 @@ Detect individual alpha peak in MEG signals.
 
 ## app-detect-alpha-peak documentation
 
-1) Detect alpha peak frequency for each channel and for the mean over all channels
+1) Detect alpha peak frequency for each channel
 2) Input file is:
     * a `.csv` file containing the Power Spectral Densities
 5) Ouput files are:
@@ -16,10 +16,10 @@ Detect individual alpha peak in MEG signals.
     * plot of the mean Power Spectral density for each channel.
 
 ### Authors
+- [Guiomar Niso](guiomar.niso@ctb.upm.es)
 - [Aurore Bussalb](aurore.bussalb@icm-institute.org)
 
 ### Contributors
-- [Guiomar Niso](guiomar.niso@ctb.upm.es)
 - [Maximilien Chaumon](maximilien.chaumon@icm-institute.org)
 
 ### Funding Acknowledgement
