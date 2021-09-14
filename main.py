@@ -59,7 +59,7 @@ alpha_channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*0.5)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*0.2)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace = .5, wspace=.2)
 axs = axs.ravel()
 
