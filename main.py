@@ -88,7 +88,7 @@ for channel in range(0, nchannels):
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
-    pic_freq = np.take(alpha_freqs,pic_loc[peak])
+    pic_freq = np.take(alpha_freqs,peak)
     alpha_channel_peak.append(pic_freq)
     
     #Plot Figure 1
