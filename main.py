@@ -99,6 +99,7 @@ for channel in range(0, nchannels):
 
 #Save Figure 1  
 plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=20)
+plt.close()
 
 # Average of the peak of all the channels
 mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
@@ -132,4 +133,5 @@ plt.ylabel('Power Spectral Density')
 plt.axvline(x=mean_alpha_peak,c='k',ls=':');
 # Save fig
 plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'),dpi=20)
+plt.close()
 
