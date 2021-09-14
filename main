@@ -19,7 +19,7 @@ mkdir -p out_dir
 mkdir -p out_dir2
 
 # Run the actual python code
-singularity exec docker://brainlife/mne:0.23dev python3 detect_alpha_peak.py
+singularity exec docker://brainlife/mne:0.23dev python3 main.py
 
 # Store PSD plot with alpha peak on product.json
 cat << EOF > product.json
