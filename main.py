@@ -71,13 +71,16 @@ for channel in range(0, nchannels):
     pic_loc, pic_mag = mne.preprocessing.peak_finder(psd_channel, extrema=1, verbose=None);
 
     # From all the peaks found, get the main peak
-    peak=pic_loc[0]
+
+    #If one peak found
+    if pic_loc.size==1: 
+        peak=pic_loc[0].copy()
 
     #If no peak found
     if pic_loc.size==0: 
         peak=(np.array([0]),np.array([0]))
         print('No peak found for channel: ',canales[channel])
-
+    
     #If more than one peak found
     elif pic_loc.size>1:
         pic_mag_list=pic_mag.tolist()    
