@@ -27,13 +27,10 @@ with open(__location__+'/config.json') as config_json:
     
 
 # == GET CONFIG VALUES ==
-
-
-
-
+fname = config['psd']
 
 # == LOAD DATA ==
-df_psd = pd.read_csv('psd.csv')
+df_psd = pd.read_csv(fname)
 canales = df_psd['channels'].copy()
 
 #Number of frequencies computed for the PSD
@@ -129,5 +126,5 @@ raw.plot_psd(tmin=tmin, tmax=tmax, fmin=fmin, fmax=fmax, proj=proj, n_fft=n_fft,
 plt.axvline(x=mean_alpha_peak,c='k',ls=':');
 plt.set_title('PSD alpha peak: ',mean_alpha_peak,' Hz')  
 # Save fig
-df_psd.to_csv(os.path.join('out_dir2','psd_alpha.png'))
+df_psd.to_csv(os.path.join('out_dir2','psd_alpha_peak.png'))
 
