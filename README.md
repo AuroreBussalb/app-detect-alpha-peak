@@ -17,9 +17,9 @@ Detect individual alpha peak in MEG signals.
 
 ### Authors
 - [Guiomar Niso](guiomar.niso@ctb.upm.es)
-- [Aurore Bussalb](aurore.bussalb@icm-institute.org)
 
 ### Contributors
+- [Aurore Bussalb](aurore.bussalb@icm-institute.org)
 - [Maximilien Chaumon](maximilien.chaumon@icm-institute.org)
 
 ### Funding Acknowledgement
