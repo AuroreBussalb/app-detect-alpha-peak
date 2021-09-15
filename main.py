@@ -57,7 +57,7 @@ alpha_freqs = np.take(freqs, ifreqs)
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
 fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(30, math.ceil(nchannels/10*1)), facecolor='w', edgecolor='k')
-fig.subplots_adjust(hspace = .1, wspace=.2)
+fig.subplots_adjust(hspace = .3, wspace=.2)
 axs = axs.ravel()
 
 
