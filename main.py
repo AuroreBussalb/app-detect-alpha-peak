@@ -60,7 +60,7 @@ alpha_channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(20, math.ceil(nchannels/5*0.2)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(30, math.ceil(nchannels/5*1)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace = .5, wspace=.2)
 axs = axs.ravel()
 
@@ -137,9 +137,12 @@ plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'))
 plt.close()
 
 # FIGURE 3
-
+plt.figure(3)
 #custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.histplot(data=alpha_channel_peak, binwidth=0.5,kde=True)
 plt.xlabel('Alpha peak frequency (Hz)')
 sns.despine()
+# Save fig
+plt.savefig(os.path.join('out_dir2','hist_alpha_peak.png'))
+plt.close
