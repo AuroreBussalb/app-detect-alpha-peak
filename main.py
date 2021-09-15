@@ -101,7 +101,7 @@ for channel in range(0, nchannels):
     plt.ylim(fmin,fmax)
 
 #Save Figure 1  
-plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=30)
+plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=40)
 plt.close()
 
 # Average of the peak of all the channels
