@@ -84,7 +84,7 @@ for channel in range(0, nchannels):
     
     #If more than one peak found
     elif pic_loc.size>1:
-        peak = psd_channel.index(max(pic_mag)) # max? average? (GUIO)
+        peak = np.where(psd_channel==max(pic_mag))[0] # max? average? (GUIO)
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
