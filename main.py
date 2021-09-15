@@ -56,8 +56,8 @@ alpha_freqs = np.take(freqs, ifreqs)
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(30, math.ceil(nchannels/10*1.5)), facecolor='w', edgecolor='k')
-fig.subplots_adjust(hspace = .3, wspace=.2)
+fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(30, math.ceil(nchannels/10*1)), facecolor='w', edgecolor='k')
+fig.subplots_adjust(hspace = .1, wspace=.2)
 axs = axs.ravel()
 
 
@@ -84,7 +84,7 @@ for channel in range(0, nchannels):
     
     #If more than one peak found
     elif pic_loc.size>1:
-        peak = np.where(psd_channel==max(pic_mag))[0] # max? average? (GUIO)
+        peak = np.where(psd_channel==max(pic_mag))[0][0] # max? average? (GUIO)
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
@@ -100,7 +100,7 @@ for channel in range(0, nchannels):
     plt.ylim(fmin,fmax)
 
 #Save Figure 1  
-plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=40)
+plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=50)
 plt.close()
 
 # Average of the peak of all the channels
