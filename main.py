@@ -79,13 +79,12 @@ for channel in range(0, nchannels):
 
     #If no peak found
     if pic_loc.size==0: 
-        peak=NaN #(np.array([0]),np.array([0]))#Nan
+        peak=math.nan #(np.array([0]),np.array([0]))#NaN
         print('No peak found for channel: ',canales[channel])
     
     #If more than one peak found
     elif pic_loc.size>1:
-        pic_mag_list=pic_mag.tolist()    
-        peak = pic_mag_list.index(max(pic_mag_list)) # max? average? (GUIO)
+        peak = psd_channel.index(max(pic_mag)) # max? average? (GUIO)
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
