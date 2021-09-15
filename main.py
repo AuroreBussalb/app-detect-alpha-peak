@@ -17,6 +17,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import math
+import seaborn as sns
 
 # Current path
 __location__ = os.path.realpath(
@@ -59,7 +60,7 @@ alpha_channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(10, math.ceil(nchannels/5*0.2)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/5),5, figsize=(20, math.ceil(nchannels/5*0.2)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace = .5, wspace=.2)
 axs = axs.ravel()
 
@@ -78,7 +79,7 @@ for channel in range(0, nchannels):
 
     #If no peak found
     if pic_loc.size==0: 
-        peak=(np.array([0]),np.array([0]))
+        peak=(np.array([0]),np.array([0]))#Nan (GUIO)
         print('No peak found for channel: ',canales[channel])
     
     #If more than one peak found
@@ -135,3 +136,10 @@ plt.axvline(x=mean_alpha_peak,c='k',ls=':')
 plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'))
 plt.close()
 
+# FIGURE 3
+
+#custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+#sns.set_theme(style="ticks", rc=custom_params)
+sns.histplot(data=alpha_channel_peak, binwidth=0.5,kde=True)
+plt.xlabel('Alpha peak frequency (Hz)')
+sns.despine()
