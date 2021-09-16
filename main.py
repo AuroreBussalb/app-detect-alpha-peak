@@ -84,7 +84,8 @@ for channel in range(0, nchannels):
     
     #If more than one peak found
     elif pic_loc.size>1:
-        peak = np.where(psd_channel==max(pic_mag))[0][0] # max? average? (GUIO)
+        peak = np.where(psd_channel==max(pic_mag))[0][0] # take the max
+        if peak==0: peak = pic_loc[np.argmax(pic_mag[1:,])+1] # if it's the first value, take the next max
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
@@ -143,6 +144,7 @@ plt.figure(3)
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.set_theme(style="ticks")
 sns.histplot(data=alpha_channel_peak, binwidth=0.5,kde=True)
+plt.xlim(xmin=fmin, xmax=fmax)
 plt.xlabel('Alpha peak frequency (Hz)')
 sns.despine()
 # Save fig
