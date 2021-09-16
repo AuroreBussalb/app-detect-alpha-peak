@@ -98,8 +98,8 @@ for channel in range(0, nchannels):
     axs[channel].plot(np.take(alpha_freqs,pic_loc),pic_mag,'*');
     axs[channel].axvline(x=pic_freq,c='k',ls=':');
     #axs[channel].set_title(canales[channel])
-    plt.xlim(fmin,fmax)
-    plt.ylim(fmin,fmax)
+    axs[channel].xlim(fmin,fmax)
+    axs[channel].ylim(fmin,fmax)
 
 #Save Figure 1  
 plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=40)
