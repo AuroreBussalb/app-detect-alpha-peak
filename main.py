@@ -76,6 +76,7 @@ for channel in range(0, nchannels):
     #If one peak found
     if pic_loc.size==1: 
         peak=pic_loc[0].copy()
+        if peak==0: peak = math.nan # if it's the first value, then ignore, maybe just a decreasing curve
 
     #If no peak found
     if pic_loc.size==0: 
