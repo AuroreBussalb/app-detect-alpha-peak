@@ -97,7 +97,7 @@ for channel in range(0, nchannels):
     axs[channel].plot(alpha_freqs,psd_channel);
     axs[channel].plot(np.take(alpha_freqs,pic_loc),pic_mag,'*');
     axs[channel].axvline(x=pic_freq,c='k',ls=':');
-    axs[channel].set_title(canales[channel])
+    #axs[channel].set_title(canales[channel])
     #axs[channel].set_xlim(fmin,fmax)
     #axs[channel].set_ylim(fmin,fmax)
 
