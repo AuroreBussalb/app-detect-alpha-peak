@@ -56,8 +56,8 @@ alpha_freqs = np.take(freqs, ifreqs)
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(30, math.ceil(nchannels/10*1.2)), facecolor='w', edgecolor='k')
-fig.subplots_adjust(hspace =.3, wspace=.2)
+fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(40, math.ceil(nchannels/10*1.2)), facecolor='w', edgecolor='k')
+fig.subplots_adjust(hspace =.5, wspace=.2)
 axs = axs.ravel()
 
 
@@ -98,8 +98,8 @@ for channel in range(0, nchannels):
     axs[channel].plot(np.take(alpha_freqs,pic_loc),pic_mag,'*');
     axs[channel].axvline(x=pic_freq,c='k',ls=':');
     axs[channel].set_title(canales[channel])
-    axs[channel].set_xlim(fmin,fmax)
-    axs[channel].set_ylim(fmin,fmax)
+    #axs[channel].set_xlim(fmin,fmax)
+    #axs[channel].set_ylim(fmin,fmax)
 
 #Save Figure 1  
 plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=40)
