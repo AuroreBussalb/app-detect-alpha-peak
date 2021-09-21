@@ -49,7 +49,7 @@ nchannels = psd_welch.shape[0]
 
 # Extract the frequencies that fall inside the alpha band
 fmin=7
-fmax=14
+fmax=13
 ifreqs = [i for i, f in zip(range(0, len(freqs)), freqs) if f > fmin  and f < fmax]
 alpha_freqs = np.take(freqs, ifreqs)
 
