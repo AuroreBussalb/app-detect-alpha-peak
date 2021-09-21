@@ -87,6 +87,8 @@ for channel in range(0, nchannels):
     elif pic_loc.size>1:
         peak = np.where(psd_channel==max(pic_mag))[0][0] # take the max
         if peak==0: peak = pic_loc[np.argmax(pic_mag[1:,])+1] # if it's the first value, take the next max
+        if peak==psd_channel.size-1: peak = pic_loc[np.argmax(pic_mag[0:-1])] # if it's the last value, take the next max
+
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
