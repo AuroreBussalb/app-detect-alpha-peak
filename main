@@ -29,14 +29,14 @@ cat << EOF > product.json
             "type": "image/png", 
 	        "name": "Alpha peak frequencies",
             "base64": "$(base64 -w 0 out_dir2/hist_alpha_peak.png)"
-        },
-        { 
-            "type": "image/png", 
-	        "name": "Power spectrum for all channels",
-            "base64": "$(base64 -w 0 out_dir2/psd_allchannels.png)"
         }
     ]
 }
+#        { 
+#            "type": "image/png", 
+#	        "name": "Power spectrum for all channels",
+#            "base64": "$(base64 -w 0 out_dir2/psd_allchannels.png)"
+#        }
 EOF
 
 
