@@ -157,7 +157,7 @@ plt.figure(3)
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.set_theme(style="ticks")
 sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
-plt.xlim(xmin=fmin, xmax=fmax)
+#plt.xlim(xmin=fmin, xmax=fmax)
 plt.xlabel('Alpha peak frequency (Hz)')
 sns.despine()
 # Save fig
