@@ -54,16 +54,19 @@ ifreqs = [i for i, f in zip(range(0, len(freqs)), freqs) if f > fmin  and f < fm
 alpha_freqs = np.take(freqs, ifreqs)
 
 
+
+
+# ==== FIND ALPHA PEAK ====
+
+'''
+
+alpha_channel_peak = []
+
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
 fig, axs = plt.subplots(math.ceil(nchannels/15),15, figsize=(50, math.ceil(nchannels/15*2)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace =.5, wspace=.2)
 axs = axs.ravel()
-
-
-# ==== FIND ALPHA PEAK ====
-
-alpha_channel_peak = []
 
 for channel in range(0, nchannels):
     
@@ -106,7 +109,15 @@ for channel in range(0, nchannels):
 plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=20)
 plt.close()
 
-# Average of the peak of all the channels
+'''
+
+# ==== FIND ALPHA MEAN VALUE ====
+alpha_channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
+
+
+
+
+# Average value across all channels
 mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 
 
