@@ -1,13 +1,13 @@
-# app-detect-alpha-peak
+# app-peak-frequency
 
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.469-blue.svg)](https://doi.org/10.25663/brainlife.app.469)
 
 Detect individual alpha peak in MEG signals.
 
-## app-detect-alpha-peak documentation
+## app-peak-frequency documentation
 
-1) Detect alpha peak frequency for each channel
+1) Detect peak frequency for each channel for a guiven bandwith
 2) Input file is:
     * a `.csv` file containing the Power Spectral Densities
 5) Ouput files are:
@@ -17,10 +17,6 @@ Detect individual alpha peak in MEG signals.
 
 ### Authors
 - [Guiomar Niso](guiomar.niso@ctb.upm.es)
-
-### Contributors
-- [Aurore Bussalb](aurore.bussalb@icm-institute.org)
-- [Maximilien Chaumon](maximilien.chaumon@icm-institute.org)
 
 ### Funding Acknowledgement
 brainlife.io is publicly funded and for the sustainability of the project it is helpful to Acknowledge the use of the platform. We kindly ask that you acknowledge the funding below in your code and publications. Copy and past the following lines into your repository when using this code.
