@@ -56,9 +56,7 @@ alpha_freqs = np.take(freqs, ifreqs)
 
 
 
-# ==== FIND ALPHA PEAK ====
-
-'''
+# ==== FIND ALPHA PEAK FREQUENCY ====
 
 alpha_channel_peak = []
 
@@ -98,7 +96,7 @@ for channel in range(0, nchannels):
     pic_freq = np.take(alpha_freqs,peak) if not math.isnan(peak) else 0 # to avoid nans
     alpha_channel_peak.append(pic_freq)
     
-    #Plot Figure 1
+    # FIGURE 1
     axs[channel].plot(alpha_freqs,psd_channel);
     axs[channel].plot(np.take(alpha_freqs,pic_loc),pic_mag,'*');
     axs[channel].axvline(x=pic_freq,c='k',ls=':');
@@ -114,7 +112,7 @@ plt.close()
 # ==== FIND ALPHA MEAN VALUE ====
 alpha_channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
 
-
+'''
 
 
 # Average value across all channels
@@ -127,16 +125,10 @@ df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['alpha_peak'
 df_alpha.to_csv(os.path.join('out_dir','alpha_peak.csv'))
 
 
-# Read CSV file
-#df = pd.read_csv("df_psd.csv")
-#print(df)
-
-
 # ==== PLOT FIGURES ====
 
 # FIGURE 2
 # Plot PSD
-
 plt.figure(2)
 plt.plot(freqs, psd_welch.transpose(), zorder=1) 
 plt.xlim(xmin=0, xmax=max(freqs))
@@ -150,6 +142,7 @@ plt.axvline(x=mean_alpha_peak,c='k',ls=':')
 # Save fig
 plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'))
 plt.close()
+
 
 # FIGURE 3
 plt.figure(3)
