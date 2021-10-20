@@ -140,7 +140,7 @@ plt.ylabel('Power Spectral Density')
 
 plt.axvline(x=mean_alpha_peak,c='k',ls=':')
 # Save fig
-plt.savefig(os.path.join('out_dir2','psd_alpha_peak.png'))
+plt.savefig(os.path.join('out_figs','psd_alpha_peak.png'))
 plt.close()
 
 
@@ -154,5 +154,5 @@ sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
 plt.xlabel('Alpha peak frequency (Hz)')
 sns.despine()
 # Save fig
-plt.savefig(os.path.join('out_dir2','hist_alpha_peak.png'))
+plt.savefig(os.path.join('out_figs','hist_alpha_peak.png'))
 plt.close()
