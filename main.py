@@ -104,7 +104,7 @@ for channel in range(0, nchannels):
     axs[channel].set_xlim(fmin,fmax)
 
 #Save Figure 1  
-plt.savefig(os.path.join('out_dir2','psd_allchannels.png'),dpi=20)
+plt.savefig(os.path.join('out_figs','psd_allchannels.png'),dpi=20)
 plt.close()
 
 '''
