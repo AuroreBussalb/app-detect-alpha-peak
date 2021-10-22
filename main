@@ -28,7 +28,7 @@ cat << EOF > product.json
         { 
             "type": "image/png", 
 	        "name": "Alpha peak frequencies",
-            "base64": "$(base64 -w 0 out_figs/hist_alpha_peak.png)"
+            "base64": "$(base64 -w 0 out_figs/hist_peak_frequency.png)"
         },
         { 
             "type": "image/png", 
