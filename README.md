@@ -3,17 +3,17 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.469-blue.svg)](https://doi.org/10.25663/brainlife.app.469)
 
-Detect individual alpha peak in MEG signals.
+Detects peak frequency of PSD for each channel on a given bandwith
 
 ## app-peak-frequency documentation
 
-1) Detect peak frequency for each channel for a guiven bandwith
+1) Detect peak frequency for each channel for a given bandwith
 2) Input file is:
     * a `.csv` file containing the Power Spectral Densities
 5) Ouput files are:
-    * a `.csv` file containing the alpha peak frequency for each channel and the mean over all channels,
-    * plot of the mean Power Spectral density over all channels,
-    * plot of the mean Power Spectral density for each channel.
+    * a `.csv` file containing the peak frequency for each channel
+    * a plot with the distribution of all peak frequencies across channels
+    * a plot the PSD frequency peak for each channel (peak found in the psd)
 
 ### Authors
 - [Guiomar Niso](guiomar.niso@ctb.upm.es)
@@ -30,32 +30,8 @@ brainlife.io is publicly funded and for the sustainability of the project it is 
 ### Citations
 1. Avesani, P., McPherson, B., Hayashi, S. et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [https://doi.org/10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## Running the App 
+      
+      
 
-### On Brainlife.io
-
-This App is still private on Brainlife.io.
-
-### Running Locally (on your machine)
-
-1. git clone this repo
-2. Inside the cloned directory, create `config.json` with the same keys as in `config.json.example` but with paths to your input 
-   files and values of the input parameters. For instance:
-
-```json
-{
-  "fif": "rest1-raw.fif"
-}
-```
-
-3. Launch the App by executing `main`
-
-```bash
-./main
-```
-
-## Output
-
-The output files are a `.csv` file and two plots in `.png`.
-
+#### MIT Copyright (c) 2021 brainlife.io The University of Texas at Austin and Indiana University
 
