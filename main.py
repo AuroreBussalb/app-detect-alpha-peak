@@ -121,7 +121,7 @@ mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 
 # == SAVE FILE ==
 # Save to CSV file (could be also TSV)
-df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak_frequency'])
+df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak'])
 df_alpha.to_csv(os.path.join('out_dir','psd.tsv'), sep='\t')
 
 
