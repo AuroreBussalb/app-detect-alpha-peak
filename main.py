@@ -86,7 +86,7 @@ for channel in range(0, nchannels):
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
-    pic_freq = np.take(band_freqs,peak) if not math.isnan(peak) else math.nan # to avoid nans
+    pic_freq = np.take(band_freqs,peak) if not math.isnan(peak) else math.nan
     channel_peak.append(pic_freq)
     
     # FIGURE 1
