@@ -27,7 +27,7 @@ cat << EOF > product.json
     "brainlife": [
         { 
             "type": "image/png", 
-	        "name": "Alpha peak frequencies",
+	        "name": "Peak frequencies",
             "base64": "$(base64 -w 0 out_figs/hist_peak_frequency.png)"
         },
         { 
