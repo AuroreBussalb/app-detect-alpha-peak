@@ -1,15 +1,9 @@
-# Copyright (c) 2020 brainlife.io
-#
-# This file is a MNE python-based brainlife.io App
-#
+# Copyright (c) 2021 brainlife.io
+##
 # Author: Guiomar Niso
 # Indiana University
 
-# Required libraries
-# pip install mne-bids coloredlogs tqdm pandas scikit-learn json_tricks fire
-
 # set up environment
-#import mne-study-template
 import os
 import json
 import mne
@@ -30,6 +24,8 @@ with open(__location__+'/config.json') as config_json:
 
 # == GET CONFIG VALUES ==
 fname = config['psd']
+fmin  = config['fmin']
+fmax  = config['fmax']
 
 # == LOAD DATA ==
 df_psd = pd.read_csv(fname, sep='\t')
@@ -48,15 +44,12 @@ nchannels = psd_welch.shape[0]
 
 
 # Extract the frequencies that fall inside the alpha band
-fmin = 7.9
-fmax = 12.1
 ifreqs = [i for i, f in zip(range(0, len(freqs)), freqs) if f > fmin  and f < fmax]
 alpha_freqs = np.take(freqs, ifreqs)
 
 
 
-
-# ==== FIND ALPHA PEAK FREQUENCY ====
+# ==== FIND FREQUENCY  PEAK ====
 
 alpha_channel_peak = []
 
@@ -108,19 +101,16 @@ plt.savefig(os.path.join('out_figs','psd_allchannels.png'),dpi=20)
 plt.close()
 
 '''
-
 # ==== FIND ALPHA MEAN VALUE ====
 alpha_channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
-
 '''
-
 
 # Average value across all channels
 mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 
 
 # == SAVE FILE ==
-# Save to CSV file (could be also TSV)
+# Save to TSV file
 df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak'])
 df_alpha.to_csv(os.path.join('out_dir','psd.tsv'), sep='\t')
 
@@ -151,7 +141,7 @@ plt.figure(3)
 sns.set_theme(style="ticks")
 sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
 #plt.xlim(xmin=fmin, xmax=fmax)
-plt.xlabel('Alpha peak frequency (Hz)')
+plt.xlabel('Peak frequency (Hz)')
 sns.despine()
 # Save fig
 plt.savefig(os.path.join('out_figs','hist_peak_frequency.png'))
