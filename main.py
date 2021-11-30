@@ -45,17 +45,17 @@ nchannels = psd_welch.shape[0]
 
 # Extract the frequencies that fall inside the alpha band
 ifreqs = [i for i, f in zip(range(0, len(freqs)), freqs) if f > fmin  and f < fmax]
-alpha_freqs = np.take(freqs, ifreqs)
+band_freqs = np.take(freqs, ifreqs)
 
 
 
 # ==== FIND FREQUENCY  PEAK ====
 
-alpha_channel_peak = []
+channel_peak = []
 
 # Prepare for Figure 1 containing all the channels
 plt.figure(1)
-fig, axs = plt.subplots(math.ceil(nchannels/15),15, figsize=(50, math.ceil(nchannels/15*2)), facecolor='w', edgecolor='k')
+fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(50, math.ceil(nchannels/10*2)), facecolor='w', edgecolor='k')
 fig.subplots_adjust(hspace =.5, wspace=.2)
 axs = axs.ravel()
 
@@ -86,13 +86,13 @@ for channel in range(0, nchannels):
         print('Multiple peaks found for channel: ',canales[channel])
 
     #Get the frequency of the peak
-    pic_freq = np.take(alpha_freqs,peak) if not math.isnan(peak) else 0 # to avoid nans
-    alpha_channel_peak.append(pic_freq)
+    pic_freq = np.take(band_freqs,peak) if not math.isnan(peak) else 0 # to avoid nans
+    channel_peak.append(pic_freq)
     
     # FIGURE 1
-    axs[channel].plot(alpha_freqs,psd_channel);
-    axs[channel].plot(np.take(alpha_freqs,pic_loc),pic_mag,'*');
-    axs[channel].axvline(x=pic_freq,c='k',ls=':');
+    axs[channel].plot(band_freqs,psd_channel)
+    axs[channel].plot(np.take(band_freqs,pic_loc),pic_mag,'*')
+    axs[channel].axvline(x=pic_freq,c='k',ls=':')
     axs[channel].set_title(canales[channel])
     axs[channel].set_xlim(fmin,fmax)
 
@@ -106,12 +106,12 @@ alpha_channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
 '''
 
 # Average value across all channels
-mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
+mean_peak=np.nanmean(channel_peak, axis=0)
 
 
 # == SAVE FILE ==
 # Save to TSV file
-df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak'])
+df_alpha = pd.DataFrame(channel_peak, index=canales, columns=['peak'])
 df_alpha.to_csv(os.path.join('out_dir','psd.tsv'), sep='\t')
 
 
@@ -124,11 +124,8 @@ plt.plot(freqs, psd_welch.transpose(), zorder=1)
 plt.xlim(xmin=0, xmax=max(freqs))
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Power Spectral Density')
-#plt.title('PSD alpha peak: ',mean_alpha_peak)  
 
-# SHADE ALPHA BAND (GUIO)
-
-plt.axvline(x=mean_alpha_peak,c='k',ls=':')
+plt.axvline(x=mean_peak,c='k',ls=':')
 # Save fig
 plt.savefig(os.path.join('out_figs','psd_peak_frequency.png'))
 plt.close()
@@ -139,7 +136,7 @@ plt.figure(3)
 #custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.set_theme(style="ticks")
-sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
+sns.histplot(data=channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
 #plt.xlim(xmin=fmin, xmax=fmax)
 plt.xlabel('Peak frequency (Hz)')
 sns.despine()
