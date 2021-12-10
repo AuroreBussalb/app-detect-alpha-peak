@@ -30,6 +30,7 @@ fmax  = config['fmax']
 # == LOAD DATA ==
 df_psd = pd.read_csv(fname, sep='\t')
 canales = df_psd['channels'].copy()
+#canales = df_psd.index.values
 
 #Number of frequencies computed for the PSD
 nfreqs = df_psd.shape[1]
