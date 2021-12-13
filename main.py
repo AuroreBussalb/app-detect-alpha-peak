@@ -63,7 +63,8 @@ if nchannels==1:
     axs[0]=axs1
     dpi=200
 else:
-    fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(40, math.ceil(nchannels/10*2)), facecolor='w', edgecolor='k')
+    Nfigs = 10
+    fig, axs = plt.subplots(math.ceil(nchannels/Nfigs),Nfigs, figsize=(40, math.ceil(nchannels/Nfigs*2)), facecolor='w', edgecolor='k')
     fig.subplots_adjust(hspace =.5, wspace=.2)
     axs = axs.ravel()
     dpi=20
@@ -104,6 +105,11 @@ for channel in range(0, nchannels):
     axs[channel].axvline(x=pic_freq,c='k',ls=':')
     axs[channel].set_title(canales[channel])
     axs[channel].set_xlim(fmin,fmax)
+
+# Delete empty axes
+if nchannels>1:
+    for i in range(nchannels, math.ceil(nchannels/Nfigs)*Nfigs):
+        fig.delaxes(axs.flatten()[i])
 
 #Save Figure 1  
 plt.savefig(os.path.join('out_figs','psd_allchannels.png'),dpi=dpi)
