@@ -151,8 +151,12 @@ plt.figure(3)
 #custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.set_theme(style="ticks")
-#sns.histplot(data=channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
-sns.histplot(data=channel_peak, binwidth=0.25, kde=True)
+
+if nchannels==1:
+    sns.histplot(data=channel_peak, kde=True) # doesn't allow binwidth=0.25 for one value data
+else:
+    sns.histplot(data=channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
+
 plt.xlim(xmin=fmin, xmax=fmax)
 plt.xlabel('Peak frequency (Hz)')
 sns.despine()
