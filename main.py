@@ -61,7 +61,7 @@ if nchannels==1:
     axs=[0]
     fig, axs1 = plt.subplots(nchannels,1, facecolor='w', edgecolor='k')
     axs[0]=axs1
-    dpi=300
+    dpi=200
 else:
     fig, axs = plt.subplots(math.ceil(nchannels/10),10, figsize=(40, math.ceil(nchannels/10*2)), facecolor='w', edgecolor='k')
     fig.subplots_adjust(hspace =.5, wspace=.2)
