@@ -9,7 +9,7 @@ Detects peak frequency of PSD for each channel on a given bandwith
 
 1) Detect peak frequency for each channel for a given bandwith
 2) Input file is:
-    * a `.tsv` file containing the Power Spectral Densities
+    * a `.tsv` file containing the signal PSD, Power Spectral Densities
 5) Ouput files are:
     * a `.tsv` file containing the peak frequency for each channel
     * a plot with the distribution of all peak frequencies across channels
