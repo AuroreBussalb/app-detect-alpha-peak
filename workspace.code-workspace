@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../app-psd"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../app-meg-split-ctf"
+		}
+	]
+}

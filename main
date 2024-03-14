@@ -8,7 +8,7 @@
 #
 # This is the main file run by the brainlife.io orchestration system
 #
-# Author: Franco Pestilli
+# Author: Guiomar Niso, Aurore Bussalb
 
 
 set -e
@@ -16,24 +16,28 @@ set -x
 
 # Make output directories
 mkdir -p out_dir
+mkdir -p out_figs
 
 # Run the actual python code
-singularity exec docker://brainlife/mne:0.23dev python3 detect_alpha_peak.py
+singularity exec docker://brainlife/mne:0.23dev python3 main.py
 
 # Store PSD plot with alpha peak on product.json
 cat << EOF > product.json
 {
     "brainlife": [
-       { 
-           "type": "image/png", 
-	   "name": "Alpha peak on mean spectrum",
-           "base64": "$(base64 -w 0 out_dir/psd_mean.png)"
-       },
-       { 
-           "type": "image/png", 
-	   "name": "Power spectrum for all channels",
-           "base64": "$(base64 -w 0 out_dir/psd_channels.png)"
-       }
-]
+        { 
+            "type": "image/png", 
+	        "name": "Peak frequencies",
+            "base64": "$(base64 -w 0 out_figs/hist_peak_frequency.png)"
+        },
+        { 
+            "type": "image/png", 
+	        "name": "Power spectrum for all channels",
+            "base64": "$(base64 -w 0 out_figs/psd_allchannels.png)"
+        }
+    ]
 }
+
 EOF
+
+
